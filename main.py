@@ -12,6 +12,7 @@ from ticker import Tickers
 
 access_key = os.environ['UPBIT_ACCESS_KEY']
 secret_key = os.environ['UPBIT_SECRET_KEY']
+slack_url = os.environ['UPBIT_SLACK_URL']
 
 tickers = Tickers()
 
@@ -66,9 +67,8 @@ def get_current_price(ticker):
 
 
 def sendSlack(message):
-    slackUrl = "https://hooks.slack.com/services/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"
     data = {'text': message}
-    slackResponse = requests.post(slackUrl, json=data)
+    slackResponse = requests.post(slack_url, json=data)
 
 
 # 로그인
